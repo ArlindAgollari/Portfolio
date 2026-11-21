@@ -9,10 +9,9 @@
   <meta name="description" content="{{ page.description | default: site.description }}">
   <meta property="og:title" content="{% if page.url == '/' %}{{ site.title }}{% else %}{{ page.title }}{% endif %}">
   <meta property="og:description" content="{{ page.description | default: site.description }}">
-  <meta property="og:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ '/assets/images/profile-pic.jpg' | absolute_url }}{% endif %}">
+  {% if page.image %}<meta property="og:image" content="{{ page.image | absolute_url }}">{% endif %}
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="{{ '/assets/images/profile-pic.jpg' | relative_url }}">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -46,12 +45,7 @@
                  {% if page.url == '/projects/' %}aria-current="page"{% endif %}
                  href="{{ "/projects/" | relative_url }}">Projects</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link {% if page.url == '/cv/' %}active{% endif %}"
-                 {% if page.url == '/cv/' %}aria-current="page"{% endif %}
-                 href="{{ "/cv/" | relative_url }}">CV</a>
-            </li>
-          </ul>
+            </ul>
         </div>
       </div>
     </nav>
@@ -63,7 +57,7 @@
 
   <footer class="site-footer">
     <div class="page-inner">
-      &copy; {{ "now" | date: "%Y" }} {{ site.name }}. All rights not reserved.
+      &copy; {{ "now" | date: "%Y" }} {{ site.name }}
     </div>
   </footer>
 
